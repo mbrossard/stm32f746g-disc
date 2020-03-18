@@ -1,6 +1,6 @@
 //! Safe abstractions for an I2C bus.
 
-use core::iter::TrustedLen;
+// use core::iter::TrustedLen;
 use core::marker::PhantomData;
 use core::ops::Deref;
 use embedded_hal;
@@ -126,7 +126,7 @@ impl<'a, I: I2cTrait, T: RegisterType> I2cConnection<'a, I, T> {
 
     fn write_bytes<ITER>(&mut self, bytes: ITER) -> Result<(), Error>
     where
-        ITER: Iterator<Item = u8> + TrustedLen,
+        ITER: Iterator<Item = u8> // + TrustedLen,
     {
         assert!(bytes.size_hint().1.is_some());
         assert_eq!(
@@ -153,7 +153,7 @@ impl<'a, I: I2cTrait, T: RegisterType> I2cConnection<'a, I, T> {
 
     fn read_bytes_raw<'b, ITER>(&mut self, buffer: ITER) -> Result<(), Error>
     where
-        ITER: Iterator<Item = &'b mut u8> + TrustedLen,
+        ITER: Iterator<Item = &'b mut u8> // + TrustedLen,
     {
         assert!(buffer.size_hint().1.is_some());
         assert_eq!(

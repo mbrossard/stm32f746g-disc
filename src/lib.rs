@@ -8,33 +8,15 @@
 //! [other stm32f746ng resources]: https://www.st.com/content/st_com/en/products/microcontrollers/stm32-32-bit-arm-cortex-mcus/stm32-high-performance-mcus/stm32f7-series/stm32f7x6/stm32f746ng.html#design-scroll
 
 #![no_std]
-#![feature(trusted_len)]
-#![feature(optin_builtin_traits)]
-#![feature(generator_trait)]
-#![feature(arbitrary_self_types)]
-#![feature(drain_filter)]
-#![feature(never_type)]
-#![feature(generators)]
-#![feature(async_await)]
-#![feature(const_transmute)]
-#![feature(alloc_prelude)]
 #![warn(missing_docs)]
 
-#[macro_use]
-extern crate alloc;
 extern crate cortex_m_rt as rt;
 
 #[macro_use]
 pub mod lcd;
-pub mod ethernet;
-pub mod future_mutex;
 pub mod gpio;
 pub mod i2c;
 pub mod init;
-pub mod interrupts;
-pub mod mpsc_queue;
 pub mod random;
-pub mod sd;
 pub mod system_clock;
-pub mod task_runtime;
 pub mod touch;
