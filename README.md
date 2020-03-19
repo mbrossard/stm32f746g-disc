@@ -1,5 +1,6 @@
 # stm32f746g-disc
 
+[![Build Status](https://travis-ci.org/mbrossard/stm32f746g-disc.svg?branch=master)](https://travis-ci.org/mbrossard/stm32f746g-disc)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
