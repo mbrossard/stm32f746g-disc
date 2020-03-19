@@ -1,13 +1,10 @@
 #![no_std]
 #![no_main]
-#![feature(alloc_error_handler)]
 
-use alloc_cortex_m::CortexMHeap;
-use core::alloc::Layout as AllocLayout;
 use core::panic::PanicInfo;
 use cortex_m_rt::{entry, exception};
 use stm32f7::stm32f7x6::{CorePeripherals, Peripherals};
-use stm32f7_discovery::{
+use stm32f746g_disc::{
     gpio::{GpioPort, OutputPin},
     init,
     system_clock::{self, Hz},
@@ -59,18 +56,9 @@ fn main() -> ! {
     }
 }
 
-#[global_allocator]
-static ALLOCATOR: CortexMHeap = CortexMHeap::empty();
-
 #[exception]
 fn SysTick() {
     system_clock::tick();
-}
-
-// define what happens in an Out Of Memory (OOM) condition
-#[alloc_error_handler]
-fn rust_oom(_: AllocLayout) -> ! {
-    loop {}
 }
 
 #[panic_handler]
