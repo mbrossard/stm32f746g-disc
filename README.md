@@ -11,6 +11,12 @@ multiple user programmable LEDs, an LCD display with resistive touch layer,
 64Mbit of memory and a user programmable USB connector, 2 microphones and an Ethernet
 port. It also contains a (non-removable) capable ST-Link V2 debugging interface.
 
+This repository is a fork of
+[embed-rs/stm32f7-discovery](https://github.com/embed-rs/stm32f7-discovery)
+I created to use stable rust. The original crate relies on many nightly options,
+which is why many features have been disabled (like `ethernet` and `sd`) or
+have be changes but untested (like `i2c`).
+
 ## Building
 
 - Install the thumbv7em-none-eabihf target:
