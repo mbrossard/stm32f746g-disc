@@ -306,6 +306,7 @@ pub fn init_i2c_3(i2c: device::I2C3, rcc: &mut RCC) -> I2C<device::I2C3> {
 /// Initializes the SAI2 controller.
 ///
 /// Required for audio input.
+/*
 pub fn init_sai_2(sai: &mut SAI2, rcc: &mut RCC) {
     let audio_frequency = 16000;
 
@@ -520,6 +521,7 @@ pub fn init_sai_2(sai: &mut SAI2, rcc: &mut RCC) {
     // Enable SAI peripheral block b
     sai.bcr1.modify(|_, w| w.saiben().set_bit()); // audio_block_enable
 }
+*/
 
 const WM8994_ADDRESS: i2c::Address = i2c::Address::bits_7(0b001_1010);
 

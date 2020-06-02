@@ -53,16 +53,16 @@ pub fn wait_ms(ms: usize) {
 /// [`tick()`] on each invocation to update the global tick counter in this module.
 pub fn init(Hz(frequency): Hz, systick: &mut SYST, rcc: &RCC) {
     use cortex_m::peripheral::syst::SystClkSource;
-    use stm32f7::stm32f7x6::rcc::pllcfgr::PLLPR;
+    use stm32f7::stm32f7x6::rcc::pllcfgr::PLLP_A;
 
     let pll_cfgr = rcc.pllcfgr.read();
     let pllm = u64::from(pll_cfgr.pllm().bits());
     let plln = u64::from(pll_cfgr.plln().bits());
-    let pllp = match pll_cfgr.pllp() {
-        PLLPR::DIV2 => 2,
-        PLLPR::DIV4 => 4,
-        PLLPR::DIV6 => 6,
-        PLLPR::DIV8 => 8,
+    let pllp = match pll_cfgr.pllp().variant() {
+        PLLP_A::DIV2 => 2,
+        PLLP_A::DIV4 => 4,
+        PLLP_A::DIV6 => 6,
+        PLLP_A::DIV8 => 8,
     };
 
     let system_clock_speed = (((25 * 1000 * 1000) / pllm) * plln) / pllp; // HSE runs at 25 MHz

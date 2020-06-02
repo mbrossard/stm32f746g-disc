@@ -183,13 +183,13 @@ macro_rules! impl_register_block_trait {
 
             fn set_mode(&mut self, pins: &[PinNumber], mode: Mode) {
                 use self::PinNumber::*;
-                use stm32f7::stm32f7x6::$gpio::moder::MODER15W;
+                use stm32f7::stm32f7x6::$gpio::moder::MODER15_A;
 
                 let variant = || match mode {
-                    Mode::Input => MODER15W::INPUT,
-                    Mode::Output => MODER15W::OUTPUT,
-                    Mode::Alternate => MODER15W::ALTERNATE,
-                    Mode::Analog => MODER15W::ANALOG,
+                    Mode::Input => MODER15_A::INPUT,
+                    Mode::Output => MODER15_A::OUTPUT,
+                    Mode::Alternate => MODER15_A::ALTERNATE,
+                    Mode::Analog => MODER15_A::ANALOG,
                 };
 
                 self.moder.modify(|_, w| {
@@ -219,12 +219,12 @@ macro_rules! impl_register_block_trait {
 
             fn set_resistor(&mut self, pins: &[PinNumber], resistor: Resistor) {
                 use self::PinNumber::*;
-                use stm32f7::stm32f7x6::$gpio::pupdr::PUPDR15W;
+                use stm32f7::stm32f7x6::$gpio::pupdr::PUPDR15_A;
 
                 let variant = || match resistor {
-                    Resistor::NoPull => PUPDR15W::FLOATING,
-                    Resistor::PullUp => PUPDR15W::PULLUP,
-                    Resistor::PullDown => PUPDR15W::PULLDOWN,
+                    Resistor::NoPull => PUPDR15_A::FLOATING,
+                    Resistor::PullUp => PUPDR15_A::PULLUP,
+                    Resistor::PullDown => PUPDR15_A::PULLDOWN,
                 };
 
                 self.pupdr.modify(|_, w| {
@@ -254,11 +254,11 @@ macro_rules! impl_register_block_trait {
 
             fn set_out_type(&mut self, pins: &[PinNumber], out_type: OutputType) {
                 use self::PinNumber::*;
-                use stm32f7::stm32f7x6::$gpio::otyper::OT15W;
+                use stm32f7::stm32f7x6::$gpio::otyper::OT15_A;
 
                 let variant = || match out_type {
-                    OutputType::OpenDrain => OT15W::OPENDRAIN,
-                    OutputType::PushPull => OT15W::PUSHPULL,
+                    OutputType::OpenDrain => OT15_A::OPENDRAIN,
+                    OutputType::PushPull => OT15_A::PUSHPULL,
                 };
 
                 self.otyper.modify(|_, w| {
@@ -288,13 +288,13 @@ macro_rules! impl_register_block_trait {
 
             fn set_out_speed(&mut self, pins: &[PinNumber], out_speed: OutputSpeed) {
                 use self::PinNumber::*;
-                use stm32f7::stm32f7x6::$gpio::ospeedr::OSPEEDR15W;
+                use stm32f7::stm32f7x6::$gpio::ospeedr::OSPEEDR15_A;
 
                 let variant = || match out_speed {
-                    OutputSpeed::Low => OSPEEDR15W::LOWSPEED,
-                    OutputSpeed::Medium => OSPEEDR15W::MEDIUMSPEED,
-                    OutputSpeed::High => OSPEEDR15W::HIGHSPEED,
-                    OutputSpeed::VeryHigh => OSPEEDR15W::VERYHIGHSPEED,
+                    OutputSpeed::Low => OSPEEDR15_A::LOWSPEED,
+                    OutputSpeed::Medium => OSPEEDR15_A::MEDIUMSPEED,
+                    OutputSpeed::High => OSPEEDR15_A::HIGHSPEED,
+                    OutputSpeed::VeryHigh => OSPEEDR15_A::VERYHIGHSPEED,
                 };
 
                 self.ospeedr.modify(|_, w| {
@@ -324,26 +324,26 @@ macro_rules! impl_register_block_trait {
 
             fn set_alternate_fn(&mut self, pins: &[PinNumber], alternate_fn: AlternateFunction) {
                 use self::PinNumber::*;
-                use stm32f7::stm32f7x6::$gpio::afrh::AFRH15W;
-                use stm32f7::stm32f7x6::$gpio::afrl::AFRL7W;
+                use stm32f7::stm32f7x6::$gpio::afrh::AFRH15_A;
+                use stm32f7::stm32f7x6::$gpio::afrl::AFRL7_A;
 
                 let variant = || match alternate_fn {
-                    AlternateFunction::AF0 => (AFRL7W::AF0, AFRH15W::AF0),
-                    AlternateFunction::AF1 => (AFRL7W::AF1, AFRH15W::AF1),
-                    AlternateFunction::AF2 => (AFRL7W::AF2, AFRH15W::AF2),
-                    AlternateFunction::AF3 => (AFRL7W::AF3, AFRH15W::AF3),
-                    AlternateFunction::AF4 => (AFRL7W::AF4, AFRH15W::AF4),
-                    AlternateFunction::AF5 => (AFRL7W::AF5, AFRH15W::AF5),
-                    AlternateFunction::AF6 => (AFRL7W::AF6, AFRH15W::AF6),
-                    AlternateFunction::AF7 => (AFRL7W::AF7, AFRH15W::AF7),
-                    AlternateFunction::AF8 => (AFRL7W::AF8, AFRH15W::AF8),
-                    AlternateFunction::AF9 => (AFRL7W::AF9, AFRH15W::AF9),
-                    AlternateFunction::AF10 => (AFRL7W::AF10, AFRH15W::AF10),
-                    AlternateFunction::AF11 => (AFRL7W::AF11, AFRH15W::AF11),
-                    AlternateFunction::AF12 => (AFRL7W::AF12, AFRH15W::AF12),
-                    AlternateFunction::AF13 => (AFRL7W::AF13, AFRH15W::AF13),
-                    AlternateFunction::AF14 => (AFRL7W::AF14, AFRH15W::AF14),
-                    AlternateFunction::AF15 => (AFRL7W::AF15, AFRH15W::AF15),
+                    AlternateFunction::AF0 => (AFRL7_A::AF0, AFRH15_A::AF0),
+                    AlternateFunction::AF1 => (AFRL7_A::AF1, AFRH15_A::AF1),
+                    AlternateFunction::AF2 => (AFRL7_A::AF2, AFRH15_A::AF2),
+                    AlternateFunction::AF3 => (AFRL7_A::AF3, AFRH15_A::AF3),
+                    AlternateFunction::AF4 => (AFRL7_A::AF4, AFRH15_A::AF4),
+                    AlternateFunction::AF5 => (AFRL7_A::AF5, AFRH15_A::AF5),
+                    AlternateFunction::AF6 => (AFRL7_A::AF6, AFRH15_A::AF6),
+                    AlternateFunction::AF7 => (AFRL7_A::AF7, AFRH15_A::AF7),
+                    AlternateFunction::AF8 => (AFRL7_A::AF8, AFRH15_A::AF8),
+                    AlternateFunction::AF9 => (AFRL7_A::AF9, AFRH15_A::AF9),
+                    AlternateFunction::AF10 => (AFRL7_A::AF10, AFRH15_A::AF10),
+                    AlternateFunction::AF11 => (AFRL7_A::AF11, AFRH15_A::AF11),
+                    AlternateFunction::AF12 => (AFRL7_A::AF12, AFRH15_A::AF12),
+                    AlternateFunction::AF13 => (AFRL7_A::AF13, AFRH15_A::AF13),
+                    AlternateFunction::AF14 => (AFRL7_A::AF14, AFRH15_A::AF14),
+                    AlternateFunction::AF15 => (AFRL7_A::AF15, AFRH15_A::AF15),
                 };
 
                 self.afrh.modify(|_, wh| {

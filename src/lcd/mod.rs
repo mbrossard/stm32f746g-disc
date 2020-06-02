@@ -62,7 +62,7 @@ impl<'a> Lcd<'a> {
     /// Sets the color `i` in the lookup table for layer 2
     pub fn set_color_lookup_table(&mut self, i: u8, color: Color) {
         self.controller
-            .l2clutwr
+            .layer2.clutwr
             .write(|w| unsafe { w
                 .clutadd().bits(i)
                 .red().bits(color.red)
